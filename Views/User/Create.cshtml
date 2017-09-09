@@ -1,0 +1,66 @@
+﻿<link href="@Url.Content("~/Extension/switchery/dist/switchery.min.css")" rel="stylesheet"/>
+<script src="@Url.Content("~/Extension/switchery/dist/switchery.min.js")"></script>
+<script src="@Url.Content("~/Scripts/user.js")"></script>
+<link href="@Url.Content("~/Extension/toastr-master/toastr.min.css")" rel="stylesheet" />
+<script src="@Url.Content("~/Extension/toastr-master/toastr.min.js")"></script>
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h1><strong>@ViewBag.title</strong></h1>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <br/>
+                <form id="formUser" data-parsley-validate class="form-horizontal form-label-left" method="post">
+                        <div class="form-group">
+                            <label class="col-md-2 col-sm-2 col-xs-12" for="userName">
+                                Tên đăng nhập <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" id="userName" name="userName" required="required" class="form-control col-md-7 col-xs-12" message-validator="Vui lòng nhập tên user!">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 col-sm-2 col-xs-12" for="pass">
+                                Mật khẩu <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="password" id="pass" name="pass" required="required" class="form-control col-md-7 col-xs-12" message-validator="Vui lòng nhập pass!">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 col-sm-2 col-xs-12" for="fullName">
+                                Họ và tên <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" id="fullName" name="fullName" required="required" class="form-control col-md-7 col-xs-12" message-validator="Vui lòng nhập họ tên!">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 col-sm-2 col-xs-12">Sử dụng</label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input class="js-switch " type="checkbox" id="active" name="active"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 col-sm-2 col-xs-12" for="email">
+                                Email
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="email" id="email" name="email" class="form-control col-md-7 col-xs-12">
+                            </div>
+                        </div>
+                        <div class="ln_solid"></div>
+                        <div class="form-group">
+                            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-2">
+                                <button class="btn btn-warning" type="button" id="cancelbutton"><i class="fa fa-times"></i> Hủy</button>
+                                <button class="btn btn-primary" type="reset"><i class="fa fa-refresh"></i> Nhập lại</button>
+                                <button class="btn btn-success" type="button" id="sumbitbutton"><i class="fa fa-check"></i> Lưu</button>
+                            </div>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

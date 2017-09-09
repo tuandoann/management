@@ -1,0 +1,94 @@
+﻿<link href="@Url.Content("~/Extension/select2/select2.css")" rel="stylesheet" />
+<link href="@Url.Content("~/Extension/bootstrap-daterangepicker/daterangepicker.css")" rel="stylesheet" />
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h1><strong>Tạo phiếu thu</strong></h1>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <form data-parsley-validate class="form-horizontal form-label-left" method="post">
+                    <div class="form-group">
+
+                        <label class="col-md-2 col-sm-2 col-xs-12">Ngày</label>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <input type="text" id="dateReceipt" name="dateReceipt" class="form-control has-feedback-left" />
+                            <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                        </div>
+                        <div class="col-md-1 col-sm-1 col-xs-12"></div>
+                        <label class="col-md-1 col-sm-1 col-xs-12" for="fullName">
+                            Số phiếu <span class="required">*</span>
+                        </label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                            <input type="text" id="receiptNo" name="receiptNo" required="required" class="form-control" message-validator="Vui lòng nhập số phiếu"  />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label class="col-md-2 col-sm-2 col-xs-12" for="partyID">
+                            Tiệc
+                        </label>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <select name="partyID" id="partyID" style="width:100%">
+                                <option value="0" selected>Chọn tiệc</option>
+                                @foreach (QUANLYTIEC.Models.TBL_PARTY item in ViewBag.comboboxPT)
+                                {
+                                    <option value="@item.PartyID">@item.CustomerName,  @item.PartyDate.ToString("dd/MM/yyyy")</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-2 col-sm-2 col-xs-12" for="position">
+                            Số tiền
+                        </label>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <input type="text" id="amount" name="amount" class="form-control"  />
+                        </div>
+                        <div class="col-md-1 col-sm-1 col-xs-12"></div>
+
+                        <label class="col-md-1 col-sm-1 col-xs-12" for="employeeID">
+                            Nhân viên
+                        </label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                            <select name="employeeID" id="employeeID" style="width:100%">
+                                <option value="0" selected>Chọn nhân viên</option>
+                                @foreach (QUANLYTIEC.Models.TBL_EMPLOYEE item in ViewBag.comboboxEP)
+                                {
+                                    <option value="@item.EmployeeID" >@item.FullName</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-2 col-sm-2 col-xs-12" for="notesReceipt">
+                            Ghi chú
+                        </label>
+                        <div class="col-md-10 col-sm-10 col-xs-12">
+                            <textarea id="notesReceipt" name="notesReceipt" class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-2">
+                            <button class="btn btn-warning" type="button" id="cancelbutton"><i class="fa fa-times"></i> Hủy</button>
+                            <button class="btn btn-primary" type="reset"><i class="fa fa-refresh"></i> Nhập lại</button>
+                            <button class="btn btn-success" type="button" id="sumbitbutton"><i class="fa fa-check"></i> Lưu</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@Scripts.Render("~/Scripts/inputmask")
+<script src="@Url.Content("~/Extension/bootstrap-daterangepicker/daterangepicker.js")"></script>
+<script src="@Url.Content("~/Extension/autoNumberic/autoNumeric.js")"></script>
+<script src="@Url.Content("~/Extension/select2/select2.min.js")"></script>
+<script src="@Url.Content("~/Scripts/receipt.js")"></script>
+
+

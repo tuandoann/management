@@ -1,0 +1,40 @@
+﻿@Styles.Render("~/Style/datatable")
+<link href="@Url.Content("~/Extension/iCheck/skins/flat/green.css")" rel="stylesheet">
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h1 style="display:inline-block">@ViewBag.title</h1>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li>
+                        <button class="btn btn-danger" id="deleteMany"><i class="fa fa-times-circle-o"></i> Xóa tùy chọn</button>
+                    </li>
+                    <li>
+                        <button class="btn btn-success" onclick="window.location.href='@Url.Content("~/Food/Create")'"><i class="fa fa-plus-circle"></i> Thêm món ăn</button>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="x_content">
+                <table id="datatable-item" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            
+                            <th>Nhóm cha</th>
+                            <th><input type="checkbox" id="selectAll" /></th> 
+                            <th>Tên món</th>
+                            <th>Tiền lời</th>
+                            <th>Đang sử dụng</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="@Url.Content("~/Extension/iCheck/icheck.min.js")"></script>
+@Scripts.Render("~/Scripts/datatable")
+<script src="@Url.Content("~/Scripts/food.js")"></script>

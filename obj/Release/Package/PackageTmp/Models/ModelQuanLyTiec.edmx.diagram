@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="17e0f3240d6349d49cb0b83471c6dda2" Name="Diagram1">
+        <EntityTypeShape EntityType="ModelQLT.SYS_CONFIG" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelQLT.SYS_FUNCTION" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelQLT.SYS_USER" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelQLT.TBL_SERVICE" Width="1.5" PointX="7.75" PointY="0.5" />
+        <EntityTypeShape EntityType="ModelQLT.TBL_MATERIAL" Width="1.5" PointX="2.625" PointY="4" />
+        <EntityTypeShape EntityType="ModelQLT.TBL_PRODUCT" Width="1.5" PointX="10.125" PointY="2.75" />
+        <EntityTypeShape EntityType="ModelQLT.TBL_PRODUCT_GROUP" Width="1.5" PointX="5.5" PointY="4.5" />
+        <EntityTypeShape EntityType="ModelQLT.TBL_PRODUCT_MATERIAL" Width="1.5" PointX="7.75" PointY="3.625" />
+        <EntityTypeShape EntityType="ModelQLT.TBL_UOM" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="ModelQLT.TBL_DEPARTMENT" Width="1.5" PointX="3.5" PointY="6.625" />
+        <EntityTypeShape EntityType="ModelQLT.TBL_EMPLOYEE" Width="1.5" PointX="7.25" PointY="6.5" />
+        <EntityTypeShape EntityType="ModelQLT.TBL_VENDOR" Width="1.5" PointX="10.125" PointY="6.125" />
+        <EntityTypeShape EntityType="ModelQLT.TBL_PRICE_PAYROLL" Width="1.5" PointX="3.375" PointY="9.75" />
+        <EntityTypeShape EntityType="ModelQLT.SYS_PARTY_TYPE" Width="1.5" PointX="9.75" PointY="9.75" />
+        <EntityTypeShape EntityType="ModelQLT.TBL_PARTY" Width="1.5" PointX="0.75" PointY="10.75" />
+        <EntityTypeShape EntityType="ModelQLT.TBL_PARTY_PRODUCT" Width="1.5" PointX="5.75" PointY="10.75" />
+        <EntityTypeShape EntityType="ModelQLT.TBL_PARTY_SERVICE" Width="1.5" PointX="11.75" PointY="9.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

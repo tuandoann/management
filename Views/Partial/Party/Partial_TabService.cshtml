@@ -1,0 +1,86 @@
+﻿<div class="x_panel">
+    <div class="x_title">
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+        <br />
+        <form data-parsley-validate class="form-horizontal form-label-left" method="post" name="partyFrom">
+            <div class="form-group">
+                <table id="service-item" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Tên dịch vụ</th>
+                            <th>Số lượng</th>
+                            <th>Đơn giá</th>
+                            <th>Ghi chú</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (ViewBag.PartyFood != null)
+                        {
+                            foreach (QUANLYTIEC.Models.TBL_PARTY_SERVICE ele in ViewBag.PartyService)
+                            {
+                                <tr name="detailService">
+                                    <th>
+                                        <input type="hidden" name="partyServiceID" id="partyServiceID" value="@ele.PartyServiceID" />
+                                        <select name="serviceID" style="width:100%" required message-validate="Vui lòng chọn dịch vụ ở tab dịch vụ">
+                                            <option value="0">Chọn dịch vụ</option>
+                                            @foreach (object item in ViewBag.ComboboxService)
+                                            {
+                                                <option value="@item.GetType().GetProperty("ServiceID").GetValue(item)" @(ele.ServiceID == (int)item.GetType().GetProperty("ServiceID").GetValue(item) ? "selected" : "")>@item.GetType().GetProperty("ServiceName").GetValue(item)</option>
+                                            }
+                                        </select>
+                                    </th>
+                                    <th><input style="width:100%" type="text" name="quantity" class="form-control" value="@ele.Quantity"/></th>
+                                    <th><input style="width:100%" type="text" name="unitPrice" class="form-control" value="@Convert.ToInt64(ele.UnitPrice)" /></th>
+                                    <th><input style="width:100%" type="text" name="notes" class="form-control" value="@ele.Notes" /></th>
+                                    <th><button name="addRemoveRow" type="button" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></th>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+
+                <table style="display:none" id="newRowService" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Tên dịch vụ</th>
+                            <th>Số lượng</th>
+                            <th>Đơn giá</th>
+                            <th>Ghi chú</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr name="detailService">
+                            <th>
+                                <select name="serviceID" style="width:100%" required message-validate="Vui lòng chọn dịch vụ ở tab dịch vụ">
+                                    <option value="0" selected>Chọn dịch vụ</option>
+                                    @foreach (object item in ViewBag.ComboboxService)
+                                    {
+                                        <option value="@item.GetType().GetProperty("ServiceID").GetValue(item)">@item.GetType().GetProperty("ServiceName").GetValue(item)</option>
+                                    }
+                                </select>
+                            </th>
+                            <th><input style="width:100%" type="text" name="quantity" class="form-control" value="1" /></th>
+                            <th><input style="width:100%" type="text" name="unitPrice" class="form-control" value="0" /></th>
+                            <th><input style="width:100%" type="text" name="notes" class="form-control" /></th>
+                            <th><button name="addRemoveRow" type="button" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3 col-sm-3 col-xs-12">
+                    <label><span>Tổng cộng: </span><span id="sumService">0</span></label>
+                </div>
+                <div class="col-md-8 col-sm-8 col-xs-12"></div>
+                <div class="col-md-1 col-sm-1 col-xs-12">
+                    <button id="addNewRowService" type="button" class="btn btn-success pull-right"><i class="fa fa-plus-circle"></i></button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="@Url.Content("~/Scripts/party/partial/service.js")"></script>

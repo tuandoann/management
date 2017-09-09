@@ -1,0 +1,35 @@
+﻿@Styles.Render("~/Style/datatable")
+    <div class="">
+        <div class="clearfix"></div>
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h1 style="display:inline-block">@ViewBag.title</h1>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <button class="btn btn-success" onclick="window.location.href='@Url.Content("~/PricePayroll/Create")'"><i class="fa fa-plus-circle"></i> Thêm đơn giá lương</button>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="x_content">
+
+                    <table id="datatable-item" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>Từ</th>
+                                <th>Đến</th>
+                                <th>Đơn giá (phút)</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+@Scripts.Render("~/Scripts/datatable")
+<script src="@Url.Content("~/Scripts/pricePayroll.js")"></script>

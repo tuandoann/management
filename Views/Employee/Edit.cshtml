@@ -1,0 +1,111 @@
+﻿@model QUANLYTIEC.Models.TBL_EMPLOYEE
+<link href="@Url.Content("~/Extension/switchery/dist/switchery.min.css")" rel="stylesheet" />
+<link href="@Url.Content("~/Extension/select2/select2.css")" rel="stylesheet" />
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h1><strong>@ViewBag.title</strong></h1>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <br />
+                <form data-parsley-validate class="form-horizontal form-label-left" method="post">
+                    <div class="form-group">
+                        <input type="hidden" value="@Model.EmployeeID" name="employeeID" id="employeeID" />
+                        <label class="col-md-2 col-sm-2 col-xs-12" for="fullName">
+                            Họ và tên <span class="required">*</span>
+                        </label>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <input type="text" id="fullName" name="fullName" required="required" class="form-control" value="@Model.FullName" message-validator="Vui lòng nhập họ tên nhân viên!" />
+                        </div>
+                        <div class="col-md-1 col-sm-1 col-xs-12"></div>
+                        <label class="col-md-2 col-sm-2 col-xs-12" for="iDCardNo">
+                            CMND
+                        </label>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <input type="text" id="iDCardNo" name="iDCardNo" class="form-control" value="@Model.IDCardNo" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 col-sm-2 col-xs-12" for="phoneNumber">
+                            Điện thoại
+                        </label>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <input type="text" id="phoneNumber" name="phoneNumber" class="form-control" value="@Model.PhoneNumber" />
+                        </div>
+                        <div class="col-md-1 col-sm-1 col-xs-12"></div>
+                        <label class="col-md-2 col-sm-2 col-xs-12" for="departmentID">
+                            Phòng ban
+                        </label>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <select name="departmentID" id="departmentID" style="width:100%">
+                                <option value="0" selected>Chọn phòng ban</option>
+                                @foreach (QUANLYTIEC.Models.TBL_DEPARTMENT item in ViewBag.comboboxPB)
+                                {
+                                    <option value="@item.DepartmentID" @Html.Raw(item.DepartmentID == Model.DepartmentID ? "selected" : "")>@item.DepartmentName</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 col-sm-2 col-xs-12" for="position">
+                            Vị trí
+                        </label>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <input type="text" id="position" name="position" class="form-control" value="@Model.Position" />
+                        </div>
+                        <div class="col-md-1 col-sm-1 col-xs-12"></div>
+                        <label class="col-md-2 col-sm-2 col-xs-12" for="position">
+                            Mã chấm công
+                        </label>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <input type="text" id="aCNo" name="aCNo" class="form-control" value="@Model.ACNo" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 col-sm-2 col-xs-12" for="address">
+                            Địa chỉ
+                        </label>
+                        <div class="col-md-10 col-sm-10 col-xs-12">
+                            <input type="text" id="address" name="address" class="form-control" value="@Model.Address" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-2">
+                            <label class="col-md-5 col-sm-5 col-xs-12 " for="isCalculatePayroll">
+                                Tính lương
+                            </label>
+                            <input type="checkbox" id="isCalculatePayroll" name="isCalculatePayroll" @Html.Raw(Model.IsCalculatePayroll ? "checked" : "") />
+                        </div>
+                        <div class="col-md-1 col-sm-1 col-xs-12"></div>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <label class="col-md-5 col-sm-5 col-xs-12" for="isCalAttendance">
+                                Tính công
+                            </label>
+                            <input type="checkbox" id="isCalAttendance" name="isCalAttendance" @Html.Raw(Model.IsCalAttendance ? "checked" : "") />
+                        </div>
+                        <div class="col-md-1 col-sm-1 col-xs-12"></div>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <label class="col-md-5 col-sm-5 col-xs-12" for="isLeaveOff">
+                                Đã nghỉ việc
+                            </label>
+                            <input type="checkbox" id="isLeaveOff" name="isLeaveOff" @Html.Raw(Model.IsLeaveOff ? "checked" : "") />
+                        </div>
+                    </div>
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-2">
+                            <button class="btn btn-warning" type="button" id="cancelbutton"><i class="fa fa-times"></i> Hủy</button>
+                            <button class="btn btn-primary" type="reset"><i class="fa fa-refresh"></i> Nhập lại</button>
+                            <button class="btn btn-success" type="button" id="sumbitbutton"><i class="fa fa-check"></i> Lưu</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="@Url.Content("~/Extension/switchery/dist/switchery.min.js")"></script>
+<script src="@Url.Content("~/Extension/select2/select2.min.js")"></script>
+<script src="@Url.Content("~/Scripts/employee.js")"></script>

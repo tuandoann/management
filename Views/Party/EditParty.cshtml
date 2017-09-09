@@ -1,0 +1,75 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model QUANLYTIEC.Models.TBL_PARTY
+<link href="@Url.Content("~/Extension/switchery/dist/switchery.min.css")" rel="stylesheet" />
+<link href="@Url.Content("~/Extension/select2/select2.css")" rel="stylesheet" />
+<link href="@Url.Content("~/Extension/bootstrap-daterangepicker/daterangepicker.css")" rel="stylesheet" />
+@Styles.Render("~/Style/datatable")
+@Scripts.Render("~/Scripts/inputmask")
+@Scripts.Render("~/Scripts/datatable")
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2><i class="fa fa-edit"></i> Chỉnh sửa tiệc</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li>
+                        <button class="btn btn-danger" type="button" id="deleteForm"><i class="fa fa-times"></i> Xóa tiệc</button>
+                    </li>
+                    <li>
+                        <button class="btn btn-warning" type="button" id="cancelAllForm"><i class="fa fa-times"></i> Hủy</button>
+                    </li>
+                    <li>
+                        <button class="btn btn-primary" type="button" id="resetAllForm"><i class="fa fa-refresh"></i> Nhập lại</button>
+                    </li>
+                    <li>
+                        <button class="btn btn-success" type="button" id="sumbitAllForm"><i class="fa fa-check"></i> Lưu</button>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                    <ul class="nav nav-tabs bar_tabs" role="tablist">
+                        <li role="presentation" class="active">
+                            <a href="#informationParty" data-toggle="tab" aria-expanded="true">Thông tin tiệc</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#meal" data-toggle="tab" aria-expanded="false">Món ăn</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#service" data-toggle="tab" aria-expanded="false">Dịch vụ</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#moneyAndPayMethod" data-toggle="tab" aria-expanded="false">Giá cả và phương thức thanh toán</a>
+                        </li>
+                    </ul>
+                    <div id="myTabContent" class="tab-content">
+                        <input type="hidden" value="@Model.PartyID" name="partyID" id="partyID" />
+                        <div class="tab-pane active" id="informationParty">
+                            @Html.Partial("~/Views/Partial/Party/Partial_TabInformationParty.cshtml",Model)
+                        </div>
+                        <div class="tab-pane" id="meal">
+                            @Html.Partial("~/Views/Partial/Party/Partial_TabMeal.cshtml", Model)
+                        </div>
+                        <div class="tab-pane" id="service">
+                            @Html.Partial("~/Views/Partial/Party/Partial_TabService.cshtml",Model)
+                        </div>
+                        <div class="tab-pane" id="moneyAndPayMethod">
+                            @Html.Partial("~/Views/Partial/Party/Partial_TabMoneyAndPayMethod.cshtml", Model)
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script src="@Url.Content("~/Scripts/ConvertLunar2Solar.js")"></script>
+<script src="@Url.Content("~/Extension/jquery-number-master/jquery.number.min.js")"></script>
+<script src="@Url.Content("~/Extension/bootstrap-daterangepicker/daterangepicker.js")"></script>
+<script src="@Url.Content("~/Extension/switchery/dist/switchery.min.js")"></script>
+<script src="@Url.Content("~/Extension/select2/select2.min.js")"></script>
+<script src="@Url.Content("~/Scripts/party/party.js")"></script>
+

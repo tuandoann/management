@@ -1,0 +1,42 @@
+﻿@model QUANLYTIEC.Models.TBL_MATERIAL
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h1><strong>@ViewBag.title</strong></h1>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <br />
+                <form data-parsley-validate class="form-horizontal form-label-left" method="post">
+                    <input type="hidden" id="materialID" name="materialID" value="@Model.MaterialID" required="required" />
+                    <div class="form-group">
+                        <label class="col-md-2 col-sm-2 col-xs-12" for="serviceName">
+                            Nguyên vật liệu <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" id="materialName" name="materialName" required="required" class="form-control col-md-7 col-xs-12" value="@Model.MaterialName"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 col-sm-2 col-xs-12" for="unitPrice">
+                            Mô tả
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <textarea id="notes" name="notes" class="form-control col-md-7 col-xs-12">@Model.Notes</textarea>
+                        </div>
+                    </div>
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-2">
+                            <button class="btn btn-warning" type="button" id="cancelbutton"><i class="fa fa-times"></i> Hủy</button>
+                            <button class="btn btn-primary" type="reset"><i class="fa fa-refresh"></i> Bắt đầu lại</button>
+                            <button class="btn btn-success" type="submit" id="sumbitbutton"><i class="fa fa-check"></i> Lưu</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="@Url.Content("~/Scripts/material.js")"></script>

@@ -1,0 +1,83 @@
+﻿@model QUANLYTIEC.Models.TBL_PARTY
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <br />
+                <form data-parsley-validate class="form-horizontal form-label-left" method="post" name="partyFrom">
+                    <div class="form-group">
+                        <table id="meal-item" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%" @(Model!=null?" data-id='"+Model.PartyID +"'" :"")>
+                            <thead>
+                                <tr>
+                                    <th>Tên món</th>
+                                    <th>Số lượng</th>
+                                    <th>Ghi chú</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (ViewBag.PartyFood != null)
+                                {
+                                    foreach (QUANLYTIEC.Models.TBL_PARTY_PRODUCT ele in ViewBag.PartyFood)
+                                    {
+                                        <tr name="detailMeal">
+                                    <th>
+                                        <input type="hidden" name="partyProductID" id="partyProductID" value="@ele.PartyProductID" />
+                                        <select name="productID" style="width:100%" required message-validate="Vui lòng chọn món ăn ở tab món ăn">
+                                            <option value="0">Chọn món ăn</option>
+                                            @foreach (object item in ViewBag.ComboboxFood)
+                                            {
+                                                <option value="@item.GetType().GetProperty("ProductID").GetValue(item)" @(ele.ProductID == (int)item.GetType().GetProperty("ProductID").GetValue(item) ? "selected" : "")>@item.GetType().GetProperty("ProductName").GetValue(item)</option>
+                                            }
+                                        </select>
+                                    </th>
+                                    <th><input style="width:100%" type="text" name="quantity" class="form-control" value="@ele.Quantity" /></th>
+                                    <th><input style="width:100%" type="text" name="notes" class="form-control" value="@ele.Notes" /></th>
+                                    <th><button name="addRemoveRow" type="button" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></th>
+                                </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+
+                        <table style="display:none" id="newRowMeal" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>Tên món</th>
+                                    <th>Số lượng</th>
+                                    <th>Ghi chú</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr name="detailMeal">
+                                    <th>
+                                        <select name="productID" style="width:100%" message-validate="Vui lòng chọn món ăn ở tab món ăn">
+                                            <option value="0" selected>Chọn món ăn</option>
+                                            @foreach (object item in ViewBag.ComboboxFood)
+                                            {
+                                                <option value="@item.GetType().GetProperty("ProductID").GetValue(item)">@item.GetType().GetProperty("ProductName").GetValue(item)</option>
+                                            }
+                                        </select>
+                                    </th>
+                                    <th><input style="width:100%" type="text" name="quantity" class="form-control" value="1"/></th>
+                                    <th><input style="width:100%" type="text" name="notes" class="form-control" /></th>
+                                    <th><button name="addRemoveRow" type="button" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-1 col-sm-1 col-xs-12 col-md-offset-11">
+                            <button id="addNewRowMeal" type="button" class="btn btn-success pull-right"><i class="fa fa-plus-circle"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="@Url.Content("~/Scripts/party/partial/meal.js")"></script>

@@ -1,0 +1,43 @@
+﻿@Styles.Render("~/Style/datatable")
+<link href="@Url.Content("~/Extension/iCheck/skins/flat/green.css")" rel="stylesheet">
+<div class="row">
+    <div class="clearfix"></div>
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h1 style="display:inline-block">@ViewBag.title</h1>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li>
+                        <button class="btn btn-danger" id="deleteMany"><i class="fa fa-times-circle-o"></i> Xóa tùy chọn</button>
+                    </li>
+                    <li>
+                        <button class="btn btn-success" onclick="window.location.href='@Url.Content("~/Employee/Create")'"><i class="fa fa-plus-circle"></i> Thêm nhân viên</button>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="x_content">
+
+                <table id="datatable-item" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" id="selectAll" /></th> 
+                            <th>Họ và tên</th>
+                            <th>Điện thoại</th>
+                            <th>Phòng ban</th>
+                            <th>Tính lương</th>
+                            <th>Tính công</th>
+                            <th>Đã nghỉ việc</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="@Url.Content("~/Extension/iCheck/icheck.min.js")"></script>
+@Scripts.Render("~/Scripts/datatable")
+<script src="@Url.Content("~/Scripts/employee.js")"></script>

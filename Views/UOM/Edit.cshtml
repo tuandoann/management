@@ -1,0 +1,34 @@
+﻿@model QUANLYTIEC.Models.TBL_UOM
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h1><strong>@ViewBag.title</strong></h1>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <br />
+                <form data-parsley-validate class="form-horizontal form-label-left" method="post">
+                    <input type="hidden" id="uOMID" name="uOMID" required="required" value="@Model.UOMID" />
+                    <div class="form-group">
+                        <label class="col-md-2 col-sm-2 col-xs-12" for="serviceName">
+                            Tên đơn vị tính <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" id="uOMName" name="uOMName" required="required" class="form-control col-md-7 col-xs-12" value="@Model.UOMName" />
+                        </div>
+                    </div>
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-2">
+                            <button class="btn btn-warning" type="button" id="cancelbutton"><i class="fa fa-times"></i> Hủy</button>
+                            <button class="btn btn-primary" type="reset"><i class="fa fa-refresh"></i> Nhập lại</button>
+                            <button class="btn btn-success" type="submit" id="sumbitbutton"><i class="fa fa-check"></i> Lưu</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="@Url.Content("~/Scripts/uom.js")"></script>

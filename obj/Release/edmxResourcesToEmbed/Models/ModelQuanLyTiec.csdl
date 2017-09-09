@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ModelQLT" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="SYS_CONFIG">
+    <Key>
+      <PropertyRef Name="ConfigID" />
+    </Key>
+    <Property Name="ConfigID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Description2" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ValueType" Type="Int32" Nullable="false" />
+    <Property Name="SourceTable" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FieldName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="SYS_FUNCTION">
+    <Key>
+      <PropertyRef Name="FunctionName" />
+    </Key>
+    <Property Name="FunctionName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Path" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModuleCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SortOrder" Type="Int32" Nullable="false" />
+    <Property Name="IconURL" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="RoleID" Type="Int16" />
+  </EntityType>
+  <EntityType Name="SYS_USER">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CardNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="RoleID" Type="Int32" />
+    <Property Name="IsAdmin" Type="Boolean" />
+  </EntityType>
+  <EntityContainer Name="ConnectionEFDataFirst" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="SYS_CONFIG" EntityType="Self.SYS_CONFIG" />
+    <EntitySet Name="SYS_FUNCTION" EntityType="Self.SYS_FUNCTION" />
+    <EntitySet Name="SYS_USER" EntityType="Self.SYS_USER" />
+    <EntitySet Name="TBL_SERVICE" EntityType="ModelQLT.TBL_SERVICE" />
+    <EntitySet Name="TBL_MATERIAL" EntityType="ModelQLT.TBL_MATERIAL" />
+    <EntitySet Name="TBL_PRODUCT" EntityType="ModelQLT.TBL_PRODUCT" />
+    <EntitySet Name="TBL_PRODUCT_GROUP" EntityType="ModelQLT.TBL_PRODUCT_GROUP" />
+    <EntitySet Name="TBL_PRODUCT_MATERIAL" EntityType="ModelQLT.TBL_PRODUCT_MATERIAL" />
+    <EntitySet Name="TBL_UOM" EntityType="ModelQLT.TBL_UOM" />
+    <EntitySet Name="TBL_DEPARTMENT" EntityType="ModelQLT.TBL_DEPARTMENT" />
+    <EntitySet Name="TBL_EMPLOYEE" EntityType="ModelQLT.TBL_EMPLOYEE" />
+    <EntitySet Name="TBL_VENDOR" EntityType="ModelQLT.TBL_VENDOR" />
+    <EntitySet Name="TBL_PRICE_PAYROLL" EntityType="ModelQLT.TBL_PRICE_PAYROLL" />
+    <EntitySet Name="SYS_PARTY_TYPE" EntityType="ModelQLT.SYS_PARTY_TYPE" />
+    <EntitySet Name="TBL_PARTY" EntityType="ModelQLT.TBL_PARTY" />
+    <EntitySet Name="TBL_PARTY_PRODUCT" EntityType="ModelQLT.TBL_PARTY_PRODUCT" />
+    <EntitySet Name="TBL_PARTY_SERVICE" EntityType="ModelQLT.TBL_PARTY_SERVICE" />
+  </EntityContainer>
+  <EntityType Name="TBL_SERVICE">
+    <Key>
+      <PropertyRef Name="ServiceID" />
+    </Key>
+    <Property Name="ServiceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ServiceName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="UnitPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="Notes" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBL_MATERIAL">
+    <Key>
+      <PropertyRef Name="MaterialID" />
+    </Key>
+    <Property Name="MaterialID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaterialName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Notes" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TBL_PRODUCT">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductGroupID" Type="Int32" />
+    <Property Name="ProductName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Notes" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ProfitAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBL_PRODUCT_GROUP">
+    <Key>
+      <PropertyRef Name="ProductGroupID" />
+    </Key>
+    <Property Name="ProductGroupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GroupName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ParentID" Type="Int32" />
+    <Property Name="LevelID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="TBL_PRODUCT_MATERIAL">
+    <Key>
+      <PropertyRef Name="ProductMaterialID" />
+    </Key>
+    <Property Name="ProductMaterialID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="MaterialID" Type="Int32" Nullable="false" />
+    <Property Name="UOMID" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+  </EntityType>
+  <EntityType Name="TBL_UOM">
+    <Key>
+      <PropertyRef Name="UOMID" />
+    </Key>
+    <Property Name="UOMID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UOMName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TBL_DEPARTMENT">
+    <Key>
+      <PropertyRef Name="DepartmentID" />
+    </Key>
+    <Property Name="DepartmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DepartmentName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TBL_EMPLOYEE">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="IDCardNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="IsCalculatePayroll" Type="Boolean" Nullable="false" />
+    <Property Name="IsCalAttendance" Type="Boolean" Nullable="false" />
+    <Property Name="IsLeaveOff" Type="Boolean" Nullable="false" />
+    <Property Name="DepartmentID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="TBL_VENDOR">
+    <Key>
+      <PropertyRef Name="VendorID" />
+    </Key>
+    <Property Name="VendorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VendorName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Notes" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TBL_PRICE_PAYROLL">
+    <Key>
+      <PropertyRef Name="PriceID" />
+    </Key>
+    <Property Name="PriceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TimeFrom" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TimeTo" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UnitPrice" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SYS_PARTY_TYPE">
+    <Key>
+      <PropertyRef Name="PartyTypeID" />
+    </Key>
+    <Property Name="PartyTypeID" Type="Int32" Nullable="false" />
+    <Property Name="PartyTypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TBL_PARTY">
+    <Key>
+      <PropertyRef Name="PartyID" />
+    </Key>
+    <Property Name="PartyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BookingDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="PartyDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="NegativeDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CustomerName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="PartyAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="PartyType" Type="Int32" />
+    <Property Name="NumberTablePlan" Type="Int32" Nullable="false" />
+    <Property Name="NumberTableException" Type="Int32" Nullable="false" />
+    <Property Name="NumberTableReal" Type="Int32" Nullable="false" />
+    <Property Name="NumberTableVegetarian" Type="Int32" Nullable="false" />
+    <Property Name="PriceVegetarian" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="PricePerTablePlan" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="PricePerTableReal" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="DepositAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="DepositDate" Type="DateTime" Precision="3" />
+    <Property Name="OtherAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="IsPayCashAfterDoneParty" Type="Boolean" Nullable="false" />
+    <Property Name="IsPayBank" Type="Boolean" Nullable="false" />
+    <Property Name="IsVAT" Type="Boolean" Nullable="false" />
+    <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UserCreate" Type="Int32" />
+  </EntityType>
+  <EntityType Name="TBL_PARTY_PRODUCT">
+    <Key>
+      <PropertyRef Name="PartyProductID" />
+    </Key>
+    <Property Name="PartyProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PartyID" Type="Int32" Nullable="false" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="Notes" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TBL_PARTY_SERVICE">
+    <Key>
+      <PropertyRef Name="PartyServiceID" />
+    </Key>
+    <Property Name="PartyServiceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PartyID" Type="Int32" Nullable="false" />
+    <Property Name="ServiceID" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="UnitPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="Notes" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

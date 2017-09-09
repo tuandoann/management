@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelQLTStoreContainer" CdmEntityContainer="ConnectionEFDataFirst">
+    <EntitySetMapping Name="SYS_CONFIG">
+      <EntityTypeMapping TypeName="ModelQLT.SYS_CONFIG">
+        <MappingFragment StoreEntitySet="SYS_CONFIG">
+          <ScalarProperty Name="ConfigID" ColumnName="ConfigID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Description2" ColumnName="Description2" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="ValueType" ColumnName="ValueType" />
+          <ScalarProperty Name="SourceTable" ColumnName="SourceTable" />
+          <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SYS_FUNCTION">
+      <EntityTypeMapping TypeName="ModelQLT.SYS_FUNCTION">
+        <MappingFragment StoreEntitySet="SYS_FUNCTION">
+          <ScalarProperty Name="FunctionName" ColumnName="FunctionName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Description2" ColumnName="Description2" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="ModuleCode" ColumnName="ModuleCode" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="IconURL" ColumnName="IconURL" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SYS_USER">
+      <EntityTypeMapping TypeName="ModelQLT.SYS_USER">
+        <MappingFragment StoreEntitySet="SYS_USER">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_SERVICE">
+      <EntityTypeMapping TypeName="ModelQLT.TBL_SERVICE">
+        <MappingFragment StoreEntitySet="TBL_SERVICE">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="ServiceName" ColumnName="ServiceName" />
+          <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_MATERIAL">
+      <EntityTypeMapping TypeName="ModelQLT.TBL_MATERIAL">
+        <MappingFragment StoreEntitySet="TBL_MATERIAL">
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="MaterialName" ColumnName="MaterialName" />
+          <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_PRODUCT">
+      <EntityTypeMapping TypeName="ModelQLT.TBL_PRODUCT">
+        <MappingFragment StoreEntitySet="TBL_PRODUCT">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ProfitAmount" ColumnName="ProfitAmount" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ProductGroupID" ColumnName="ProductGroupID" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_PRODUCT_GROUP">
+      <EntityTypeMapping TypeName="ModelQLT.TBL_PRODUCT_GROUP">
+        <MappingFragment StoreEntitySet="TBL_PRODUCT_GROUP">
+          <ScalarProperty Name="LevelID" ColumnName="LevelID" />
+          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+          <ScalarProperty Name="ProductGroupID" ColumnName="ProductGroupID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_PRODUCT_MATERIAL">
+      <EntityTypeMapping TypeName="ModelQLT.TBL_PRODUCT_MATERIAL">
+        <MappingFragment StoreEntitySet="TBL_PRODUCT_MATERIAL">
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="UOMID" ColumnName="UOMID" />
+          <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="ProductMaterialID" ColumnName="ProductMaterialID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_UOM">
+      <EntityTypeMapping TypeName="ModelQLT.TBL_UOM">
+        <MappingFragment StoreEntitySet="TBL_UOM">
+          <ScalarProperty Name="UOMName" ColumnName="UOMName" />
+          <ScalarProperty Name="UOMID" ColumnName="UOMID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_DEPARTMENT">
+      <EntityTypeMapping TypeName="ModelQLT.TBL_DEPARTMENT">
+        <MappingFragment StoreEntitySet="TBL_DEPARTMENT">
+          <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+          <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_EMPLOYEE">
+      <EntityTypeMapping TypeName="ModelQLT.TBL_EMPLOYEE">
+        <MappingFragment StoreEntitySet="TBL_EMPLOYEE">
+          <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+          <ScalarProperty Name="IsLeaveOff" ColumnName="IsLeaveOff" />
+          <ScalarProperty Name="IsCalAttendance" ColumnName="IsCalAttendance" />
+          <ScalarProperty Name="IsCalculatePayroll" ColumnName="IsCalculatePayroll" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="IDCardNo" ColumnName="IDCardNo" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_VENDOR">
+      <EntityTypeMapping TypeName="ModelQLT.TBL_VENDOR">
+        <MappingFragment StoreEntitySet="TBL_VENDOR">
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+          <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_PRICE_PAYROLL">
+      <EntityTypeMapping TypeName="ModelQLT.TBL_PRICE_PAYROLL">
+        <MappingFragment StoreEntitySet="TBL_PRICE_PAYROLL">
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="TimeTo" ColumnName="TimeTo" />
+          <ScalarProperty Name="TimeFrom" ColumnName="TimeFrom" />
+          <ScalarProperty Name="PriceID" ColumnName="PriceID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SYS_PARTY_TYPE">
+      <EntityTypeMapping TypeName="ModelQLT.SYS_PARTY_TYPE">
+        <MappingFragment StoreEntitySet="SYS_PARTY_TYPE">
+          <ScalarProperty Name="PartyTypeName" ColumnName="PartyTypeName" />
+          <ScalarProperty Name="PartyTypeID" ColumnName="PartyTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_PARTY">
+      <EntityTypeMapping TypeName="ModelQLT.TBL_PARTY">
+        <MappingFragment StoreEntitySet="TBL_PARTY">
+          <ScalarProperty Name="UserCreate" ColumnName="UserCreate" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="IsVAT" ColumnName="IsVAT" />
+          <ScalarProperty Name="IsPayBank" ColumnName="IsPayBank" />
+          <ScalarProperty Name="IsPayCashAfterDoneParty" ColumnName="IsPayCashAfterDoneParty" />
+          <ScalarProperty Name="OtherAmount" ColumnName="OtherAmount" />
+          <ScalarProperty Name="DepositDate" ColumnName="DepositDate" />
+          <ScalarProperty Name="DepositAmount" ColumnName="DepositAmount" />
+          <ScalarProperty Name="PricePerTableReal" ColumnName="PricePerTableReal" />
+          <ScalarProperty Name="PricePerTablePlan" ColumnName="PricePerTablePlan" />
+          <ScalarProperty Name="PriceVegetarian" ColumnName="PriceVegetarian" />
+          <ScalarProperty Name="NumberTableVegetarian" ColumnName="NumberTableVegetarian" />
+          <ScalarProperty Name="NumberTableReal" ColumnName="NumberTableReal" />
+          <ScalarProperty Name="NumberTableException" ColumnName="NumberTableException" />
+          <ScalarProperty Name="NumberTablePlan" ColumnName="NumberTablePlan" />
+          <ScalarProperty Name="PartyType" ColumnName="PartyType" />
+          <ScalarProperty Name="PartyAddress" ColumnName="PartyAddress" />
+          <ScalarProperty Name="PhoneNumber2" ColumnName="PhoneNumber2" />
+          <ScalarProperty Name="PhoneNumber1" ColumnName="PhoneNumber1" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="NegativeDate" ColumnName="NegativeDate" />
+          <ScalarProperty Name="PartyDate" ColumnName="PartyDate" />
+          <ScalarProperty Name="BookingDate" ColumnName="BookingDate" />
+          <ScalarProperty Name="PartyID" ColumnName="PartyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_PARTY_PRODUCT">
+      <EntityTypeMapping TypeName="ModelQLT.TBL_PARTY_PRODUCT">
+        <MappingFragment StoreEntitySet="TBL_PARTY_PRODUCT">
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="PartyID" ColumnName="PartyID" />
+          <ScalarProperty Name="PartyProductID" ColumnName="PartyProductID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_PARTY_SERVICE">
+      <EntityTypeMapping TypeName="ModelQLT.TBL_PARTY_SERVICE">
+        <MappingFragment StoreEntitySet="TBL_PARTY_SERVICE">
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+          <ScalarProperty Name="PartyID" ColumnName="PartyID" />
+          <ScalarProperty Name="PartyServiceID" ColumnName="PartyServiceID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

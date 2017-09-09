@@ -1,0 +1,49 @@
+﻿<link href="@Url.Content("~/Extension/select2/select2.css")" rel="stylesheet"/>
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h1><strong>@ViewBag.title</strong></h1>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <br />
+                <form data-parsley-validate class="form-horizontal form-label-left" method="post">
+                    <div class="form-group">
+                        <label class="col-md-2 col-sm-2 col-xs-12" for="serviceName">
+                            Tên nhóm <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" id="groupName" name="groupName" required="required" class="form-control col-md-7 col-xs-12" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 col-sm-2 col-xs-12" for="unitPrice">
+                            Nhóm cha
+                        </label>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <select name="parentName" id="parentName" style="width:100%">
+                                 <option value="0/0" selected="selected">Nhóm cha</option>
+                                @foreach (QUANLYTIEC.Models.TBL_PRODUCT_GROUP item in ViewBag.combobox)
+                                { 
+                                   <option value="@item.ProductGroupID/@item.LevelID">@item.GroupName</option>
+                                }
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-2">
+                            <button class="btn btn-warning" type="button" id="cancelbutton"><i class="fa fa-times"></i> Hủy</button>
+                            <button class="btn btn-primary" type="reset"><i class="fa fa-refresh"></i> Nhập lại</button>
+                            <button class="btn btn-success" type="submit" id="sumbitbutton"><i class="fa fa-check"></i> Lưu</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="@Url.Content("~/Extension/select2/select2.min.js")"></script>
+<script src="@Url.Content("~/Scripts/groupFood.js")"></script>

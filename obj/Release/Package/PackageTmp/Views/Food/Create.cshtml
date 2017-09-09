@@ -1,0 +1,127 @@
+﻿<link href="@Url.Content("~/Extension/switchery/dist/switchery.min.css")" rel="stylesheet" />
+<link href="@Url.Content("~/Extension/select2/select2.css")" rel="stylesheet" />
+@Scripts.Render("~/Scripts/inputmask")
+@Styles.Render("~/Style/datatable")
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h1><strong>@ViewBag.title</strong></h1>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <br />
+                <form data-parsley-validate class="form-horizontal form-label-left" method="post">
+                    <div class="form-group">
+                        <label class="col-md-2 col-sm-2 col-xs-12" for="productName">
+                            Tên món <span class="required">*</span>
+                        </label>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <input type="text" id="productName" name="productName" required="required" class="form-control col-md-7 col-xs-12" message-validator="Vui lòng nhập tên món." />
+                        </div>
+                        <div class="col-md-1 col-sm-1 col-xs-12"></div>
+                        <label class="col-md-2 col-sm-2 col-xs-12">Sử dụng</label>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <input class="js-switch " type="checkbox" id="isActive" name="isActive" checked/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 col-sm-2 col-xs-12" for="productGroupID">
+                            Nhóm món ăn
+                        </label>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <select name="productGroupID" id="productGroupID" style="width:100%">
+                                <option value="0" selected>Chọn nhóm ăn món</option>
+                                @foreach (QUANLYTIEC.Models.TBL_PRODUCT_GROUP item in ViewBag.combobox)
+                                {
+                                    <option value="@item.ProductGroupID">@item.GroupName</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-md-1 col-sm-1 col-xs-12"></div>
+                        <label class="col-md-2 col-sm-2 col-xs-12" for="profitAmount">
+                            Tiền lời
+                        </label>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <input type="text" id="profitAmount" name="profitAmount" class="form-control col-md-7 col-xs-12" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 col-sm-2 col-xs-12" for="notes">
+                            Mô tả
+                        </label>
+                        <div class="col-md-10 col-sm-10 col-xs-12">
+                            <textarea id="notes" name="notes" class="form-control col-md-7 col-xs-12"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <table id="material-item" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>Nguyên vật liệu</th>
+                                    <th>ĐVT</th>
+                                    <th>S.Lượng/T.Lượng</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+
+                        <table style="display:none" id="newRow" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>Nguyên vật liệu</th>
+                                    <th>ĐVT</th>
+                                    <th>S.Lượng/T.Lượng</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr name="detail">
+                                    <th>
+                                        <input name="productMaterialID" type="hidden" value="0" />
+                                        <select name="materialDetail" style="width:100%" message-validator="Vui lòng chọn nguyên liệu." required>
+                                            <option value="0" selected>Chọn nguyên vật liệu</option>
+                                            @foreach (QUANLYTIEC.Models.TBL_MATERIAL item in ViewBag.comBoBoxNVL)
+                                            {
+                                                <option value="@item.MaterialID">@item.MaterialName</option>
+                                            }
+                                        </select>
+                                    </th>
+                                    <th>
+                                        <select name="dvtDetail" style="width:100%" message-validator="Vui lòng chọn ĐVT." required>
+                                            <option value="0" selected>Chọn ĐVT</option>
+                                            @foreach (QUANLYTIEC.Models.TBL_UOM item in ViewBag.comBoBoxDVT)
+                                            {
+                                                <option value="@item.UOMID">@item.UOMName</option>
+                                            }
+                                        </select>
+                                    </th>
+                                    <th class="dt-body-right"><input style="width:100%" type="text" name="quantityDetail" class="form-control" /></th>
+                                    <th><button name="addRemoveRow" type="button" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-1 col-sm-1 col-xs-12 col-md-offset-11">
+                            <button id="addNewRow" type="button" class="btn btn-success pull-right"><i class="fa fa-plus-circle"></i></button>
+                        </div>
+                    </div>
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-2">
+                            <button class="btn btn-warning" type="button" id="cancelbutton"><i class="fa fa-times"></i> Hủy</button>
+                            <button class="btn btn-primary" type="reset" ><i class="fa fa-refresh"></i> Bắt đầu lại</button>
+                            <button class="btn btn-success" type="button" id="sumbitbutton"><i class="fa fa-check"></i> Lưu</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@Scripts.Render("~/Scripts/datatable")
+<script src="@Url.Content("~/Extension/switchery/dist/switchery.min.js")"></script>
+<script src="@Url.Content("~/Extension/select2/select2.min.js")"></script>
+<script src="@Url.Content("~/Scripts/food.js")"></script>

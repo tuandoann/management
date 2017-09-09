@@ -1,0 +1,64 @@
+﻿@Styles.Render("~/Style/datatable")
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h1 style="display:inline-block">@ViewBag.title</h1>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <button class="btn btn-success" onclick="window.location.href='@Url.Content("~/GroupFood/Create")'"><i class="fa fa-plus-circle"></i> Thêm nhóm món ăn</button>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="x_content">
+
+                    <table id="datatable-item" class="table table-striped table-bordered dt-responsive nowrap  tree-basic tree" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th style="width:40%">Tên nhóm</th>
+                                <th style="width:40%">Nhóm cha</th>
+                                <th style="width:20%"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (int i = 0; i < ViewBag.List.Length; i++)
+                            {
+                                int productGroupId = Convert.ToInt32(ViewBag.List[i].GetType().GetProperty("ProductGroupID").GetValue(ViewBag.List[i], null));
+                                int parentID = Convert.ToInt32(ViewBag.List[i].GetType().GetProperty("ParentID").GetValue(ViewBag.List[i], null));
+                                string groupName = ViewBag.List[i].GetType().GetProperty("GroupName").GetValue(ViewBag.List[i], null);
+                                string parentName = ViewBag.List[i].GetType().GetProperty("ParentName").GetValue(ViewBag.List[i], null);
+                                string cid = "treegrid-" + productGroupId;
+                                string ID = productGroupId.ToString();
+
+                                string cparent = "";
+                                string fontWeight = "bold";
+                                if (parentID != 0)
+                                {
+                                    cparent = "treegrid-parent-" + parentID.ToString();
+
+                                    fontWeight = "none";
+                                }
+
+                                <tr class="@cid @cparent">
+                                    <td style="font-weight:@fontWeight;">@groupName</td>
+                                    <td style="font-weight:@fontWeight;">@parentName</td>
+                                    <td style="text-align:center;">
+                                        <div class="row">
+                                            <a class="href btn btn-info btn-xs" href="/GroupFood/Edit?id=@ID" id="edit" style=""><i class="fa fa-pencil"></i> Sửa</a>
+                                            <a class="href btn btn-danger btn-xs" onclick="return DeleteConfirm('@ID');" href="#" id="delete" style=""><i class="fa fa-trash-o"></i> Xóa</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+<link href="~/Extension/treegrid/treegrid.css" rel="stylesheet" />
+<script src="~/Extension/treegrid/treegrid.min.js"></script>
+@Scripts.Render("~/Scripts/datatable")
+<script src="@Url.Content("~/Scripts/groupFood.js")"></script>

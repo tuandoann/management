@@ -1,0 +1,343 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QUANLYTIECModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="SYS_CONFIG">
+    <Key>
+      <PropertyRef Name="ConfigID" />
+    </Key>
+    <Property Name="ConfigID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="250" />
+    <Property Name="Description2" Type="nvarchar" MaxLength="250" />
+    <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ValueType" Type="int" Nullable="false" />
+    <Property Name="SourceTable" Type="nvarchar" MaxLength="50" />
+    <Property Name="FieldName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="SYS_FUNCTION">
+    <Key>
+      <PropertyRef Name="FunctionName" />
+    </Key>
+    <Property Name="FunctionName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description2" Type="nvarchar" MaxLength="50" />
+    <Property Name="Path" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModuleCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="SortOrder" Type="int" Nullable="false" />
+    <Property Name="IconURL" Type="nvarchar" MaxLength="200" />
+    <Property Name="RoleID" Type="smallint" />
+  </EntityType>
+  <EntityType Name="SYS_PARTY_TYPE">
+    <Key>
+      <PropertyRef Name="PartyTypeID" />
+    </Key>
+    <Property Name="PartyTypeID" Type="int" Nullable="false" />
+    <Property Name="PartyTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SYS_USER">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="CardNumber" Type="nvarchar" MaxLength="20" />
+    <Property Name="RoleID" Type="int" />
+    <Property Name="IsAdmin" Type="bit" />
+    <Property Name="IsConfig" Type="bit" Nullable="false" />
+    <Property Name="IsRegisterParty" Type="bit" Nullable="false" />
+    <Property Name="IsMaterial" Type="bit" Nullable="false" />
+    <Property Name="IsAttendance" Type="bit" Nullable="false" />
+    <Property Name="IsReceipt" Type="bit" Nullable="false" />
+    <Property Name="IsList" Type="bit" Nullable="false" />
+    <Property Name="IsReport" Type="bit" Nullable="false" />
+    <Property Name="IsCost" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBL_DEPARTMENT">
+    <Key>
+      <PropertyRef Name="DepartmentID" />
+    </Key>
+    <Property Name="DepartmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DepartmentName" Type="nvarchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBL_EMPLOYEE">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="IDCardNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar" MaxLength="200" />
+    <Property Name="IsCalculatePayroll" Type="bit" Nullable="false" />
+    <Property Name="IsCalAttendance" Type="bit" Nullable="false" />
+    <Property Name="IsLeaveOff" Type="bit" Nullable="false" />
+    <Property Name="DepartmentID" Type="int" />
+    <Property Name="PositionID" Type="int" />
+    <Property Name="ACNo" Type="nvarchar" MaxLength="20" />
+    <Property Name="Birthday" Type="datetime" />
+    <Property Name="IsPayByHour" Type="bit" Nullable="false" />
+    <Property Name="BasicSalary" Type="int" Nullable="false" />
+    <Property Name="Notes" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="TBL_FAST_PAYROLL">
+    <Key>
+      <PropertyRef Name="FastPayRollID" />
+    </Key>
+    <Property Name="FastPayRollID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeID" Type="int" Nullable="false" />
+    <Property Name="CheckIn" Type="datetime" Nullable="false" />
+    <Property Name="CheckOut" Type="datetime" Nullable="false" />
+    <Property Name="Amount" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBL_GROUP_MENU">
+    <Key>
+      <PropertyRef Name="GroupMenuID" />
+    </Key>
+    <Property Name="GroupMenuID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GroupMenuName" Type="nvarchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBL_MATERIAL">
+    <Key>
+      <PropertyRef Name="MaterialID" />
+    </Key>
+    <Property Name="MaterialID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaterialName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="200" />
+    <Property Name="UOMID" Type="int" />
+    <Property Name="UnitPrie" Type="int" Nullable="false" />
+    <Property Name="MaterialGroupID" Type="int" />
+  </EntityType>
+  <EntityType Name="TBL_MATERIAL_GROUP">
+    <Key>
+      <PropertyRef Name="MaterialGroupID" />
+    </Key>
+    <Property Name="MaterialGroupID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaterialGroupName" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="TBL_PARTY">
+    <Key>
+      <PropertyRef Name="PartyID" />
+    </Key>
+    <Property Name="PartyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BookingDate" Type="datetime" Nullable="false" />
+    <Property Name="PartyDate" Type="datetime" Nullable="false" />
+    <Property Name="NegativeDate" Type="datetime" Nullable="false" />
+    <Property Name="CustomerName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="PhoneNumber1" Type="nvarchar" MaxLength="20" />
+    <Property Name="PhoneNumber2" Type="nvarchar" MaxLength="20" />
+    <Property Name="Address" Type="nvarchar" MaxLength="200" />
+    <Property Name="PartyAddress" Type="nvarchar" MaxLength="200" />
+    <Property Name="PartyTypeID" Type="int" />
+    <Property Name="NumberTablePlan" Type="int" Nullable="false" />
+    <Property Name="NumberTableException" Type="int" Nullable="false" />
+    <Property Name="NumberTableReal" Type="int" Nullable="false" />
+    <Property Name="NumberTableVegetarian" Type="int" Nullable="false" />
+    <Property Name="PriceVegetarian" Type="money" Nullable="false" />
+    <Property Name="PricePerTablePlan" Type="money" Nullable="false" />
+    <Property Name="PricePerTableReal" Type="money" Nullable="false" />
+    <Property Name="DepositAmount" Type="money" Nullable="false" />
+    <Property Name="DepositDate" Type="datetime" />
+    <Property Name="OtherAmount" Type="money" Nullable="false" />
+    <Property Name="IsPayCashAfterDoneParty" Type="bit" Nullable="false" />
+    <Property Name="IsPayBank" Type="bit" Nullable="false" />
+    <Property Name="IsVAT" Type="bit" Nullable="false" />
+    <Property Name="Notes" Type="nvarchar(max)" />
+    <Property Name="UserCreate" Type="int" />
+    <Property Name="IsComplete" Type="bit" Nullable="false" />
+    <Property Name="IsPayment" Type="bit" Nullable="false" />
+    <Property Name="IsHidePricePlan" Type="bit" Nullable="false" />
+    <Property Name="IsHidePriceReal" Type="bit" Nullable="false" />
+    <Property Name="NotesOtherAmount" Type="nvarchar" MaxLength="200" />
+    <Property Name="ReceiptDate" Type="datetime" />
+    <Property Name="EmployeeReceipt" Type="nvarchar" MaxLength="100" />
+    <Property Name="VATPercent" Type="money" Nullable="false" />
+    <Property Name="TotalAmount" Type="money" Nullable="false" />
+    <Property Name="TotalAmountAfterDeposit" Type="money" Nullable="false" />
+    <Property Name="PayAmount" Type="money" Nullable="false" />
+    <Property Name="RemainAmount" Type="money" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBL_PARTY_OTHER_AMOUNT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PartyID" Type="int" Nullable="false" />
+    <Property Name="OtherAmount" Type="money" Nullable="false" />
+    <Property Name="NotesOtherAmount" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="TBL_PARTY_PRODUCT">
+    <Key>
+      <PropertyRef Name="PartyProductID" />
+    </Key>
+    <Property Name="PartyProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PartyID" Type="int" Nullable="false" />
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="200" />
+    <Property Name="UnitCost" Type="money" Nullable="false" />
+    <Property Name="ProfitAmount" Type="money" Nullable="false" />
+    <Property Name="TotalAmount" Type="money" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBL_PARTY_PRODUCT_MATERIAL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PartyProductID" Type="int" Nullable="false" />
+    <Property Name="PartyID" Type="int" Nullable="false" />
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="MaterialID" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+    <Property Name="UnitPrice" Type="int" Nullable="false" />
+    <Property Name="TotalAmount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="VendorID" Type="int" />
+    <Property Name="IsDelivery" Type="bit" Nullable="false" />
+    <Property Name="EmployeeID" Type="int" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="TBL_PARTY_SERVICE">
+    <Key>
+      <PropertyRef Name="PartyServiceID" />
+    </Key>
+    <Property Name="PartyServiceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PartyID" Type="int" Nullable="false" />
+    <Property Name="ServiceID" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="UnitPrice" Type="money" Nullable="false" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="TBL_POSITION">
+    <Key>
+      <PropertyRef Name="PositionID" />
+    </Key>
+    <Property Name="PositionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PositionName" Type="nvarchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBL_PRICE_PAYROLL">
+    <Key>
+      <PropertyRef Name="PriceID" />
+    </Key>
+    <Property Name="PriceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TimeFrom" Type="datetime" Nullable="false" />
+    <Property Name="TimeTo" Type="datetime" Nullable="false" />
+    <Property Name="UnitPrice" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBL_PRODUCT">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GroupMenuID" Type="int" />
+    <Property Name="MaterialGroupID" Type="int" />
+    <Property Name="ProductGroupID" Type="int" />
+    <Property Name="ProductName" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="500" />
+    <Property Name="CostAmount" Type="money" Nullable="false" />
+    <Property Name="ProfitAmount" Type="money" Nullable="false" />
+    <Property Name="TotalAmount" Type="money" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBL_PRODUCT_GROUP">
+    <Key>
+      <PropertyRef Name="ProductGroupID" />
+    </Key>
+    <Property Name="ProductGroupID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GroupName" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="ParentID" Type="int" />
+    <Property Name="LevelID" Type="int" />
+  </EntityType>
+  <EntityType Name="TBL_PRODUCT_MATERIAL">
+    <Key>
+      <PropertyRef Name="ProductMaterialID" />
+    </Key>
+    <Property Name="ProductMaterialID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="MaterialID" Type="int" Nullable="false" />
+    <Property Name="UOMID" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+    <Property Name="UnitPrice" Type="money" Nullable="false" />
+    <Property Name="TotalAmount" Type="money" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBL_RECEIPT">
+    <Key>
+      <PropertyRef Name="ReceiptID" />
+    </Key>
+    <Property Name="ReceiptID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ReceiptDate" Type="datetime" Nullable="false" />
+    <Property Name="ReceiptNo" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="PartyID" Type="int" />
+    <Property Name="Amount" Type="int" Nullable="false" />
+    <Property Name="EmployeeID" Type="int" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="TBL_RESULT_ATT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeID" Type="int" Nullable="false" />
+    <Property Name="CheckIn" Type="datetime" Nullable="false" />
+    <Property Name="CheckOut" Type="datetime" Nullable="false" />
+    <Property Name="TotalAmount" Type="money" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBL_SERVICE">
+    <Key>
+      <PropertyRef Name="ServiceID" />
+    </Key>
+    <Property Name="ServiceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ServiceName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="UnitPrice" Type="money" Nullable="false" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="200" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="UOMID" Type="int" />
+    <Property Name="VendorID" Type="int" />
+    <Property Name="IsStandard" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBL_UOM">
+    <Key>
+      <PropertyRef Name="UOMID" />
+    </Key>
+    <Property Name="UOMID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UOMName" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBL_VENDOR">
+    <Key>
+      <PropertyRef Name="VendorID" />
+    </Key>
+    <Property Name="VendorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VendorName" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar" MaxLength="200" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="200" />
+    <Property Name="HomePhone" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="QUANLYTIECModelStoreContainer">
+    <EntitySet Name="SYS_CONFIG" EntityType="Self.SYS_CONFIG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SYS_FUNCTION" EntityType="Self.SYS_FUNCTION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SYS_PARTY_TYPE" EntityType="Self.SYS_PARTY_TYPE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SYS_USER" EntityType="Self.SYS_USER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_DEPARTMENT" EntityType="Self.TBL_DEPARTMENT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_EMPLOYEE" EntityType="Self.TBL_EMPLOYEE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_FAST_PAYROLL" EntityType="Self.TBL_FAST_PAYROLL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_GROUP_MENU" EntityType="Self.TBL_GROUP_MENU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_MATERIAL" EntityType="Self.TBL_MATERIAL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_MATERIAL_GROUP" EntityType="Self.TBL_MATERIAL_GROUP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_PARTY" EntityType="Self.TBL_PARTY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_PARTY_OTHER_AMOUNT" EntityType="Self.TBL_PARTY_OTHER_AMOUNT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_PARTY_PRODUCT" EntityType="Self.TBL_PARTY_PRODUCT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_PARTY_PRODUCT_MATERIAL" EntityType="Self.TBL_PARTY_PRODUCT_MATERIAL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_PARTY_SERVICE" EntityType="Self.TBL_PARTY_SERVICE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_POSITION" EntityType="Self.TBL_POSITION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_PRICE_PAYROLL" EntityType="Self.TBL_PRICE_PAYROLL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_PRODUCT" EntityType="Self.TBL_PRODUCT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_PRODUCT_GROUP" EntityType="Self.TBL_PRODUCT_GROUP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_PRODUCT_MATERIAL" EntityType="Self.TBL_PRODUCT_MATERIAL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_RECEIPT" EntityType="Self.TBL_RECEIPT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_RESULT_ATT" EntityType="Self.TBL_RESULT_ATT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_SERVICE" EntityType="Self.TBL_SERVICE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_UOM" EntityType="Self.TBL_UOM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_VENDOR" EntityType="Self.TBL_VENDOR" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

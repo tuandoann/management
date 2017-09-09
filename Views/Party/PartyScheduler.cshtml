@@ -1,0 +1,27 @@
+﻿<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2><strong>Lịch đặt tiệc</strong></h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li>
+                        <button class="btn btn-success" type="button" id="sumbitAllForm" onclick="window.location.href='@Url.Content("~/Party/RegisterParty")'"><i class="fa fa-plus"></i> Đăng ký tiệc</button>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <br />
+                <form data-parsley-validate class="form-horizontal form-label-left" method="post">
+                    <div class="form-group" id='partyFullCalendar'>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FullCalendar -->
+@Styles.Render("~/Style/fullCalendar")
+@Scripts.Render("~/Scripts/fullCalendar")
+<script src="@Url.Content("~/Scripts/party/party.js")"></script>

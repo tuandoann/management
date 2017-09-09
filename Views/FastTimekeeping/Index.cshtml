@@ -1,0 +1,61 @@
+﻿<link href="@Url.Content("~/Extension/select2/select2.css")" rel="stylesheet" />
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h1><strong>Chấm công nhanh</strong></h1>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <br />
+                <form data-parsley-validate class="form-horizontal form-label-left" method="post">
+                    <div class="form-group">
+                        <label class="col-md-2 col-sm-2 col-xs-12">
+                            Nhân viên
+                        </label>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <select name="employee" id="employee" style="width:100%">
+                                <option value="0" selected>Chọn nhân viên</option>
+                                @foreach (QUANLYTIEC.Models.TBL_EMPLOYEE item in ViewBag.comboboxNV)
+                                {
+                                    <option value="@item.EmployeeID">@item.FullName</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group" name="lableCaLam">
+                        <label class="col-md-2 col-sm-2 col-xs-12 col-md-offset-2" style="text-align:center">
+                            Từ
+                        </label>
+                        <label class="col-md-2 col-sm-2 col-xs-12" style="text-align:center">
+                            Đến
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-1 col-sm-1 col-xs-12 col-md-offset-5">
+                            <button title="Thêm" id="addNewRow" type="button" class="btn btn-success pull-right"><i class="fa fa-plus-circle"></i></button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 col-sm-2 col-xs-12 col-md-offset-4" style="text-align:right">
+                            Tổng lương
+                        </label>
+                        <label class="col-md-2 col-sm-2 col-xs-12" id="sumSalary" style="text-align:right"></label>
+                    </div>
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-2">
+                            <button class="btn btn-primary" type="button" id="resetButton"><i class="fa fa-refresh"></i> Nhập lại</button>
+                            <button class="btn btn-success" type="button" id="calculatorButton"><i class="fa fa-calculator"></i> Tính</button>
+                            <button class="btn btn-info" type="button" id="saveButton" disabled><i class="fa fa-save"></i> Lưu</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="@Url.Content("~/Extension/jquery-number-master/jquery.number.min.js")"></script>
+<script src="@Url.Content("~/Extension/select2/select2.min.js")"></script>
+@Scripts.Render("~/Scripts/inputmask")
+<script src="@Url.Content("~/Scripts/fastTimekeeping.js")"></script>

@@ -1,0 +1,107 @@
+﻿<link href="@Url.Content("~/Extension/select2/select2.css")" rel="stylesheet" />
+<link href="@Url.Content("~/Extension/bootstrap-daterangepicker/daterangepicker.css")" rel="stylesheet" />
+<div class="page-title">
+    <div class="title_left">
+        <h3>THỐNG KÊ LƯƠNG</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="clearfix"></div>
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_content">
+                <form id="formReport" data-parsley-validate class="form-horizontal form-label-left" method="post">
+                    @{
+                        long sum = 0;
+                        DateTime dateFrom = ViewBag.DateFrom;
+                        DateTime dateTo = ViewBag.DateTo;
+                        int employyee = ViewBag.EmployeeId;
+                        <div class="form-group">
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                <label class="col-md-4 col-sm-4 col-xs-12">Từ ngày</label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <input type="text" id="dateFrom" name="dateFrom" class="form-control has-feedback-left" />
+                                    <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                <label class="col-md-4 col-sm-4 col-xs-12">Đến ngày</label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <input type="text" id="dateTo" name="dateTo" class="form-control has-feedback-left" />
+                                    <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                <label class="col-md-4 col-sm-4 col-xs-12">Nhân viên</label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <select name="employee" id="employee" style="width:100%">
+                                        <option value="0" selected="selected">Tất cả</option>
+                                        @foreach (QUANLYTIEC.Models.TBL_EMPLOYEE item in ViewBag.Employee)
+                                        {
+                                            <option value="@item.EmployeeID" @( (employyee == item.EmployeeID) ? "selected" : "")>@item.FullName</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                <button class="btn btn-warning" type="button" id="watch">Xem</button>
+                                <button class="btn btn-primary" id="printButton" type="button"><i></i>Xuất báo cáo</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <table id="datatable-report" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th style="text-align:center">STT</th>
+                                        <th style="text-align:center">TÊN NHÂN VIÊN</th>
+                                        <th style="text-align:center">VỊ TRÍ</th>
+                                        <th style="text-align:center">TỔNG LƯƠNG</th>
+                                        <th style="text-align:center">ĐƠN VỊ</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (ViewBag.dataTable != null)
+                                    {
+
+                                        var dt = ViewBag.dataTable;
+                                        for (int i = 0; i < ViewBag.dataTable.Rows.Count; i++)
+                                        {
+                                            sum += Convert.ToInt64(dt.Rows[i]["TotalAmount"]);
+                                            <tr>
+                                                <td style="text-align:center">
+                                                    @(i + 1)
+                                                </td>
+                                                <td>
+                                                    @dt.Rows[i]["FullName"].ToString()
+                                                </td>
+                                                <td style="text-align:left">
+                                                    @dt.Rows[i]["Position"].ToString()
+                                                </td>
+                                                <td style="text-align:right">
+                                                    @dt.Rows[i]["TotalAmount"].ToString("#,##0")
+                                                </td>
+                                                <td style="text-align:center">
+                                                    @dt.Rows[i]["UOM"].ToString()
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="form-group">
+                            <p class="col-md-12 col-sm-12 col-xs-12" style="text-align:right"><strong>Tổng cộng: @sum.ToString("#,##0")</strong> VNĐ</p>
+                        </div>
+                        <script>
+                            var dateFrom = new Date(@Html.Raw(dateFrom.Year + "," + (dateFrom.Month - 1) + "," + dateFrom.Day));
+                            var dateTo = new Date(@Html.Raw(dateTo.Year + "," + (dateTo.Month - 1)+ "," + dateTo.Day));
+                        </script>
+                    }
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="@Url.Content("~/Extension/bootstrap-daterangepicker/daterangepicker.js")"></script>
+<script src="@Url.Content("~/Extension/select2/select2.min.js")"></script>
+<script src="@Url.Content("~/Scripts/report/reportSalary.js")"></script>

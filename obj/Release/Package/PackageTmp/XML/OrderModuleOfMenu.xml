@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<OrderModuleOfMenu>
+  <order1>config</order1>
+  <order2>Scheduler</order2>
+  <order3>menu</order3>
+  <order4>Timekeeping</order4>
+  <order5>Ftimekeeping</order5>
+  <order6>receipts</order6>
+  <order7>category</order7>
+  <order8>report</order8>
+</OrderModuleOfMenu>

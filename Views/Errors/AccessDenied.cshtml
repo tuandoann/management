@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "AccessDenied";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    @Styles.Render("~/Style/index")
+</head>
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <!-- page content -->
+            <div class="col-md-12">
+                <div class="col-middle">
+                    <div class="text-center text-center">
+                        <h1 class="error-number">403</h1>
+                        <h2>Access denied</h2>
+                        <h6>
+                            Bạn không có quyền truy cập
+                        </h6>
+                        <div class="mid_center">
+                        
+                            <form>
+                                <div class="col-xs-12 form-group pull-right top_search">
+                                    <div class="input-group">
+                                        
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /page content -->
+        </div>
+    </div>
+
+    @Scripts.Render("~/Scripts/datatable")
+
+
+</body>
+</html>
+
+
+

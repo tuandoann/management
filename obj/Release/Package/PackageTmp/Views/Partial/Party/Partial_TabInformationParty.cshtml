@@ -1,0 +1,130 @@
+﻿@model QUANLYTIEC.Models.TBL_PARTY
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <br />
+                <form data-parsley-validate class="form-horizontal form-label-left" method="post" name="partyFrom">
+                    <div class="form-group">
+                        <label class="col-md-2 col-sm-2 col-xs-12" for="bookingDate">
+                            Ngày đặt <span class="required">*</span>
+                        </label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                            <input type="text" id="bookingDate" name="bookingDate" required="required" class="form-control has-feedback-left" @((Model != null) ? " value=" + Model.BookingDate + "' " : "")/>
+                            <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 col-sm-2 col-xs-12">
+                            Ngày đãi <span class="required">*</span>
+                        </label>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <input type="text" id="partyDate" name="partyDate" required="required" class="form-control has-feedback-left" @((Model != null) ? " value=" + Model.PartyDate.ToString("MM/dd/yyyy_HH:mm") + "" : "") />
+                            <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                        </div>
+                        <label class="col-md-1 col-sm-1 col-xs-12" for="partyDate">DL</label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                            <input type="text" id="negativeDate" name="negativeDate" required="required" class="form-control" placeholder="dd/MM/yyyy" @((Model != null) ? " value=" + Model.NegativeDate.ToString("dd/MM/yyyy") + "" : "") data-inputmask="'mask': '99/99/9999'" />
+                        </div>
+                        <label class="col-md-1 col-sm-1 col-xs-12" for="negativeDate">AL</label>
+
+                        <label class="col-md-1 col-sm-1 col-xs-12" for="partyType">
+                            Loại tiệc
+                        </label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                            @if(ViewBag.ComboboxPartyType != null )
+                            {
+                                <select name="partyType" id="partyType" style="width:100%">
+                                <option value="0">Chọn kiểu tiệc</option>
+                                @foreach (QUANLYTIEC.Models.SYS_PARTY_TYPE item in ViewBag.ComboboxPartyType)
+                                {
+                                    <option value="@item.PartyTypeID" @(Model != null ?( (Model.PartyType == item.PartyTypeID) ? "selected" : "") : "")>@item.PartyTypeName</option>
+                                }
+                                 </select>
+                            }
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 col-sm-2 col-xs-12" for="customerName">
+                            Ông/bà <span class="required">*</span>
+                        </label>
+                        <div class="col-md-10 col-sm-10 col-xs-12">  <input type="text" id="customerName" name="customerName" class="form-control" @{if(Model != null) { @Html.Raw("value='" + Model.CustomerName + "'") } }/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 col-sm-2 col-xs-12" for="phoneNumber1">
+                            Điện thoại 1
+                        </label>
+                        <div class="col-md-4 col-sm-4col-xs-12">
+                            <input type="text" id="phoneNumber1" name="phoneNumber1" class="form-control col-md-7 col-xs-12" @{if (Model != null) { @Html.Raw("value='" + Model.PhoneNumber1 + "'")  } } />
+                        </div>
+                        <label class="col-md-2 col-sm-2 col-xs-12" for="phoneNumber2">
+                            Điện thoại 2
+                        </label>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <input type="text" id="phoneNumber2" name="phoneNumber2" class="form-control col-md-7 col-xs-12" @{if (Model != null) { @Html.Raw("value='" + Model.PhoneNumber2 + "'")  } } />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 col-sm-2 col-xs-12" for="partyAddress">
+                            Địa chỉ tiệc
+                        </label>
+                        <div class="col-md-10 col-sm-10 col-xs-12">
+                            <input type="text" id="partyAddress" name="partyAddress" class="form-control" @{if (Model != null) { @Html.Raw("value='" + Model.PartyAddress + "'")  } } />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 col-sm-2 col-xs-12">
+                            Số lượng bàn
+                        </label>
+                        <label class="col-md-1 col-sm-1 col-xs-12" for="numberTablePlan">
+                            <i class="fa fa-plus"></i> Dự kiến
+                        </label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                            <input type="text" id="numberTablePlan" name="numberTablePlan" class="form-control" @{if (Model != null) { @Html.Raw("value='" + Model.NumberTablePlan + "'")  } } />
+                        </div>
+                        <label class="col-md-1 col-sm-1 col-xs-12" for="numberTableReal">
+                            <i class="fa fa-plus"></i> Chính thức
+                        </label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                            <input type="text" id="numberTableReal" name="numberTableReal" class="form-control" @{if (Model != null) { @Html.Raw("value='" + Model.NumberTableReal + "'")  } } />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-2 col-sm-2 col-xs-12"></div>
+                        <label class="col-md-1 col-sm-1 col-xs-12" for="numberTableException">
+                            <i class="fa fa-plus"></i> Dự phòng
+                        </label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                            <input type="text" id="numberTableException" name="numberTableException" class="form-control" @{if (Model != null) { @Html.Raw("value='" + Model.NumberTableException + "'")  } } />
+                        </div>
+                        <label class="col-md-1 col-sm-1 col-xs-12" for="numberTableVegetarian">
+                            <i class="fa fa-plus"></i> Bàn chay
+                        </label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                            <input type="text" id="numberTableVegetarian" name="numberTableVegetarian" class="form-control" @((Model != null) ? " value=" + Model.NumberTableVegetarian + "" : "") />
+                        </div>
+                        <label class="col-md-1 col-sm-1 col-xs-12" for="priceVegetarian">
+                            Đơn giá
+                        </label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                            <input type="text" id="priceVegetarian" name="priceVegetarian" class="form-control" @((Model != null) ? " value=" + Model.PriceVegetarian + "" : "") />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 col-sm-2 col-xs-12" for="notes">
+                            Ghi chú
+                        </label>
+                        <div class="col-md-10 col-sm-10 col-xs-12">
+                            <input type="text" id="notes" name="notes" class="form-control" @((Model != null) ? " value=" + Model.Notes + "" : "") />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="@Url.Content("~/Scripts/party/partial/informationParty.js")"></script>

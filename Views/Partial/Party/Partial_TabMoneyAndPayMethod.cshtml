@@ -1,0 +1,78 @@
+﻿@model QUANLYTIEC.Models.TBL_PARTY
+<div class="x_panel">
+    <div class="x_title">
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+        <br />
+        <form data-parsley-validate class="form-horizontal form-label-left" method="post" name="partyFrom">
+            <div class="form-group">
+                <label class="col-md-2 col-sm-2 col-xs-12" for="pricePerTablePlan">
+                    Giá tạm tính
+                </label>
+                <div class="col-md-2 col-sm-2 col-xs-12">
+                    <input type="text" id="pricePerTablePlan" name="pricePerTablePlan" class="form-control" readonly @((Model != null) ? " value=" + Convert.ToInt64(Model.PricePerTablePlan) + "" : "") />
+                </div>
+                <label class="col-md-1 col-sm-1 col-xs-12">/ 1 bàn</label>
+                <div class="col-md-2 col-sm-2 col-xs-12">
+                    <button type="button" class="btn btn-info" id="calculator_pricePerTablePlan"><i class="fa fa-calculator"></i> Tính</button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 col-sm-2 col-xs-12" for="pricePerTableReal">
+                    Giá chính thức
+                </label>
+                <div class="col-md-2 col-sm-2 col-xs-12">
+                    <input type="text" id="pricePerTableReal" name="pricePerTableReal" class="form-control" @((Model != null) ? " value=" + Convert.ToInt64(Model.PricePerTableReal) + "" : "") />
+                </div>
+                <label class="col-md-2 col-sm-2 col-xs-12">/ 1 bàn/ 10 người</label>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 col-sm-2 col-xs-12" for="otherAmount">
+                    Các khoản khác
+                </label>
+                <div class="col-md-2 col-sm-2 col-xs-12">
+                    <input type="text" id="otherAmount" name="otherAmount" class="form-control" @((Model != null) ? " value=" + Convert.ToInt64(Model.OtherAmount) + "" : "") />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 col-sm-2 col-xs-12" for="depositAmount">
+                    Đặt cọc trước
+                </label>
+                <div class="col-md-2 col-sm-2 col-xs-12">
+                    <input type="text" id="depositAmount" name="depositAmount" class="form-control" @((Model != null) ? " value=" + Convert.ToInt64(Model.DepositAmount) + "" : "") />
+                </div>
+                <label class="col-md-2 col-sm-2 col-xs-12" for="depositDate">
+                    Ngày đặt cọc
+                </label>
+                <div class="col-md-2 col-sm-2 col-xs-12">
+                    <input type="text" id="depositDate" name="depositDate" class="form-control has-feedback-left" @((Model != null && Model.DepositDate != null) ? " value=" + Convert.ToDateTime(Model.DepositDate).ToString("dd/MM/yyyy") + "" : "") />
+                    <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 col-sm-2 col-xs-12">
+                    Thanh toán
+                </label>
+                <div class="col-md-3 col-sm-3 col-xs-12">
+                    <input type="checkbox" id="isPayCashAfterDoneParty" name="isPayCashAfterDoneParty" @(Model != null && Model.IsPayCashAfterDoneParty ? "checked" : "" )/>
+                    Tiền mặt sau tiệc
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-12">
+                    <input type="checkbox" id="isPayBank" name="isPayBank" @(Model != null && Model.IsPayBank ? "checked" : "") />
+                    Hóa đơn đỏ
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-12">
+                    <input type="checkbox" id="isVAT" name="isVAT" @(Model != null && Model.IsVAT ? "checked" : "") />
+
+                    Chuyển khoản
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="@Url.Content("~/Scripts/party/partial/moneyAndPayMethod.js")"></script>
